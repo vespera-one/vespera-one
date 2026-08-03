@@ -25,7 +25,7 @@ body {
 
 /* --- DEGRADÉ OR LUXE & ACCENTS --- */
 .gold-gradient-text {
-    background: linear-gradient(135deg, #FFF0B3 0%, #E6CA65 35%, #D4AF37 70%, #997A15 100%);
+    background: linear-gradient(135deg, #FFF0B3 0%, #BF8C6A 35%, #BF8C6A 70%, #BF8C6A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -107,11 +107,11 @@ body {
 }
 
 .nav-link:hover {
-    color: #E6CA65;
+    color: #BF8C6A;
 }
 
 .nav-btn {
-    background: linear-gradient(135deg, #E6CA65 0%, #D4AF37 100%);
+    background: linear-gradient(135deg, #BF8C6A 0%, #BF8C6A 100%);
     color: #080B11;
     padding: 10px 22px;
     border-radius: 30px;
@@ -140,7 +140,7 @@ body {
     background: rgba(212, 175, 55, 0.08);
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 30px;
-    color: #E6CA65;
+    color: #BF8C6A;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 25px;
@@ -301,7 +301,7 @@ body {
 }
 
 .pricing-card.featured {
-    border: 2px solid #D4AF37;
+    border: 2px solid #BF8C6A;
     background: rgba(212, 175, 55, 0.04);
     box-shadow: 0 0 35px rgba(212, 175, 55, 0.15);
 }
@@ -310,7 +310,7 @@ body {
     position: absolute;
     top: -14px;
     right: 25px;
-    background: linear-gradient(135deg, #E6CA65, #D4AF37);
+    background: linear-gradient(135deg, #BF8C6A, #BF8C6A);
     color: #080B11;
     font-size: 0.75rem;
     font-weight: 800;
@@ -351,11 +351,11 @@ body {
 .rating-banner .score {
     font-size: 2.8rem;
     font-weight: 800;
-    color: #E6CA65;
+    color: #BF8C6A;
 }
 
 .rating-banner .stars {
-    color: #FFD700;
+    color: #BF8C6A;
     font-size: 1.5rem;
     letter-spacing: 3px;
     margin: 5px 0;
@@ -367,7 +367,7 @@ body {
 }
 
 .review-stars {
-    color: #FFD700;
+    color: #BF8C6A;
     font-size: 1.2rem;
     margin-bottom: 12px;
 }
@@ -381,7 +381,7 @@ body {
 .review-author {
     font-weight: 700;
     font-size: 0.88rem;
-    color: #E6CA65;
+    color: #BF8C6A;
 }
 
 /* --- PORTFOLIO --- */
@@ -406,7 +406,7 @@ body {
 
 .portfolio-card:hover {
     transform: translateY(-6px);
-    border-color: #D4AF37;
+    border-color: #1a2233;
 }
 
 .portfolio-screen {
@@ -495,7 +495,7 @@ footer {
 }
 
 .logo-typographique:hover {
-    color: #D4AF37;
+    color: #BF8C6A;
 }
 .card-cta {
     display: block !important;
