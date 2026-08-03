@@ -8,12 +8,21 @@
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+:root {
+  --bg-color: #fafbfc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+}
+
 body {
-    background-color: #080B11;
-    color: #F3F4F6;
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* --- DEGRADÉ OR LUXE & ACCENTS --- */
@@ -470,4 +479,22 @@ footer {
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
     .nav-menu { display: none; }
+}
+/* Import de la police Playfair Display pour le logo style Pentagram */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* Style du logo typographique */
+.logo-typographique {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #F3F4F6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logo-typographique:hover {
+    color: #D4AF37;
 }
