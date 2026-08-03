@@ -497,3 +497,24 @@ footer {
 .logo-typographique:hover {
     color: #D4AF37;
 }
+.card-cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    color: #0b0f19;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: 2px solid #ffffff;
+    text-align: center;
+}
+
+.card-cta:hover {
+    background-color: transparent;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
