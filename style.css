@@ -9,12 +9,13 @@
 }
 
 :root {
-  --bg-color: #fafbfc;
-  --card-bg: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
+  :root {
+    --bg-color: #000000;       /* Fond noir total */
+    --card-bg: #111111;        /* Fond des blocs gris très foncé */
+    --text-main: #ffffff;      /* Texte en blanc pur */
+    --text-muted: #888888;     /* Texte secondaire en gris */
+    --accent: #ffffff;         /* Couleur principale (boutons en blanc ou noir inversé) */
+}
 }
 
 body {
@@ -57,9 +58,9 @@ body {
 }
 
 .hero .badge { animation: slideInLeft 0.8s ease-out forwards; }
-.hero h1 { animation: slideInLeft 0.9s ease-out 0.2s forwards; opacity: 0; }
-.hero p { animation: slideInLeft 0.9s ease-out 0.4s forwards; opacity: 0; }
-.hero-buttons { animation: fadeInUp 0.9s ease-out 0.6s forwards; opacity: 0; }
+.hero h1 { animation: slideInLeft 0.9s ease-out 0.2s forwards; }
+.hero p { animation: slideInLeft 0.9s ease-out 0.4s forwards; }
+.hero-buttons { animation: fadeInUp 0.9s ease-out 0.6s forwards; }
 
 /* --- BARRE DE NAVIGATION --- */
 .navbar {
@@ -188,14 +189,15 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #FFF0B3 0%, #E6CA65 40%, #D4AF37 100%);
-    color: #080B11;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
+    background: #f0f0f0;
 }
 
 .btn-secondary {
