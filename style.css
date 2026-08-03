@@ -9,14 +9,14 @@
 }
 
 :root {
-    --bg-color: #0b0f19;
-    --card-bg: #121826;
-    --text-main: #ffffff;
-    --text-muted: #94a3b8;
+    --bg-primary: #121826;     /* Bleu Nuit Profond (Fond) */
+    --bg-card: #1a2233;        /* Gris Ardoise (Cartes) */
+    --text-main: #E8E9EC;      /* Crème Doux (Texte) */
+    --accent-copper: #BF8C6A;  /* Cuivre / Bronze (Boutons & Accents) */
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-primary);
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
@@ -515,4 +515,34 @@ footer {
     background-color: #00f0ff !important;
     color: #0b0f19 !important;
     transform: translateY(-2px);
+}
+/* Application de la nouvelle identité Cuivre et Gris Ardoise */
+.pricing-card, .card, .contact-box {
+    background-color: #1a2233 !important;
+    border: 1px solid rgba(191, 140, 106, 0.25) !important;
+}
+
+/* Boutons principaux et CTA en Cuivre / Bronze */
+.btn-primary, 
+.card-cta, 
+.btn-offre,
+.nav-cta {
+    background-color: #BF8C6A !important;
+    color: #121826 !important;
+    border: 2px solid #BF8C6A !important;
+    font-weight: 700 !important;
+}
+
+.btn-primary:hover, 
+.card-cta:hover, 
+.btn-offre:hover {
+    background-color: transparent !important;
+    color: #BF8C6A !important;
+}
+
+/* Accents et étoiles en Cuivre */
+.gold-gradient-text, 
+.stars, 
+span[style*="color"] {
+    color: #BF8C6A !important;
 }
