@@ -709,3 +709,55 @@ section#portfolio div,
     max-width: 100% !important;
     box-sizing: border-box !important;
 }
+
+/* --- BOUTONS HERO ULTRA-PRO ET PROpropRES --- */
+.hero-buttons {
+    display: flex !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    margin-top: 30px !important;
+}
+
+.hero-buttons a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 250px !important;
+    min-height: 52px !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+    line-height: 1.2 !important;
+}
+
+/* Premier bouton : Vert émeraude plein et chic */
+.hero-buttons a:nth-child(1) {
+    background-color: #00E676 !important; /* Un beau vert vif et propre */
+    color: #0b0f19 !important;
+    border: none !important;
+}
+
+.hero-buttons a:nth-child(1):hover {
+    opacity: 0.9 !important;
+    transform: translateY(-2px);
+}
+
+/* Deuxième bouton : Contour élégant propre */
+.hero-buttons a:nth-child(2) {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.hero-buttons a:nth-child(2):hover {
+    border-color: #00E676 !important;
+    color: #00E676 !important;
+    transform: translateY(-2px);
+}
