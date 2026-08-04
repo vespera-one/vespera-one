@@ -637,3 +637,21 @@ a.btn-secondaire:hover,
     border-color: var(--cuivre-accent) !important;
     color: var(--cuivre-accent) !important;
 }
+/* On force la même taille et les mêmes dimensions pour les deux boutons du Hero */
+.hero-buttons a {
+    display: inline-block !important;
+    width: 260px !important; /* Ajuste cette valeur si tu les veux un peu plus grands ou plus petits */
+    text-align: center !important;
+    box-sizing: border-box !important;
+    padding: 14px 20px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+}
+
+/* On enlève la ligne blanche sur le premier bouton */
+.hero-buttons a:nth-child(1) {
+    border: none !important;
+    outline: none !important;
+}
