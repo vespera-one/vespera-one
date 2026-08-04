@@ -464,18 +464,7 @@ body {
     font-size: 1.05rem;
     color: var(--texte-blanc);                      /* Utilise ton blanc global */
 }
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-.portfolio-card {
-    width: 100%;
-}
 /* --- BOÎTE DE CONTACT --- */
 .contact-box {
     background: rgba(18, 24, 38, 0.7);
@@ -589,4 +578,17 @@ footer {
 .stars,
 span[style*="color"] {
     color: var(--cuivre-accent) !important;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-card {
+    width: 100%;
 }
