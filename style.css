@@ -687,9 +687,10 @@ a.btn-secondaire:hover,
     transform: translateY(-2px);
 }
 
-/* --- ALIGNEMENT FINAL DES 3 CARTES EN LIGNE --- */
-.portfolio-grid, 
-.grid {
+/* --- CORRECTION CIBLÉE UNIQUEMENT POUR LES RÉALISATIONS --- */
+#portfolio .portfolio-grid,
+section#portfolio .grid,
+.portfolio-showcase {
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
@@ -699,11 +700,11 @@ a.btn-secondaire:hover,
     width: 100% !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
-
+    
 }
 
-
-.portfolio-card {
+#portfolio .portfolio-card,
+section#portfolio .portfolio-card {
     flex: 1 1 300px !important;
     max-width: 360px !important;
 
