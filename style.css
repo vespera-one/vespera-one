@@ -655,3 +655,23 @@ a.btn-secondaire:hover,
     border: none !important;
     outline: none !important;
 }
+/* --- CORRECTION RADICALE POUR LES CARTES DE RÉALISATIONS --- */
+.portfolio-grid, 
+section#portfolio div, 
+.realisations-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.portfolio-card, 
+.realisation-card {
+    flex: 1 1 320px !important;
+    max-width: 360px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
