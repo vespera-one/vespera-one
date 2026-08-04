@@ -687,10 +687,16 @@ a.btn-secondaire:hover,
     transform: translateY(-2px);
 }
 
-/* --- CORRECTION CIBLÉE UNIQUEMENT POUR LES RÉALISATIONS --- */
-#portfolio .portfolio-grid,
-section#portfolio .grid,
-.portfolio-showcase {
+/* --- REGLEMENT DEFINITIF DES CARTES PORTFOLIO --- */
+section:has(#portfolio), #portfolio, .portfolio-section, .portfolio-grid {
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Force les cartes à se mettre côte à côte sur la même ligne */
+.portfolio-grid, 
+.grid, 
+div[class*="portfolio"] {
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
@@ -703,9 +709,9 @@ section#portfolio .grid,
     
 }
 
-#portfolio .portfolio-card,
-section#portfolio .portfolio-card {
+.portfolio-card {
     flex: 1 1 300px !important;
     max-width: 360px !important;
-
+    min-width: 280px !important;
+    width: 100% !important;
 }
