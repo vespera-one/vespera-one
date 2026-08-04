@@ -690,3 +690,22 @@ section#portfolio div,
     width: 100% !important;
     max-width: none !important;
 }
+
+/* --- VRAI ALIGNEMENT PROPRE EN 3 COLONNES CENTREES --- */
+.portfolio-grid, 
+.grid, 
+.portfolio-showcase {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+.portfolio-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
