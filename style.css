@@ -675,3 +675,18 @@ section#portfolio div,
     width: 100% !important;
     box-sizing: border-box !important;
 }
+
+/* On force l'affichage en 3 colonnes égales pour tes réalisations */
+.portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.portfolio-card {
+    width: 100% !important;
+    max-width: none !important;
+}
