@@ -592,3 +592,19 @@ span[style*="color"] {
 .portfolio-card {
     width: 100%;
 }
+.contact-box a {
+    color: var(--texte-blanc) !important;
+    text-decoration: none !important;
+}
+.contact-box a:hover {
+    color: var(--cuivre-accent) !important;
+}
+
+.card-cta {
+    text-decoration: none !important;
+}
+.pricing-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cuivre-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
