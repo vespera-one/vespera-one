@@ -608,3 +608,32 @@ span[style*="color"] {
     border-color: var(--cuivre-accent);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
+.portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 30px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.portfolio-card {
+    width: 100% !important;
+}
+
+a.btn-secondaire, 
+.hero-buttons a:nth-child(2), 
+.portfolio-cta {
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 14px 20px !important;
+    border-radius: 8px !important;
+    color: var(--texte-blanc) !important;
+    transition: all 0.3s ease !important;
+}
+
+a.btn-secondaire:hover, 
+.hero-buttons a:nth-child(2):hover {
+    border-color: var(--cuivre-accent) !important;
+    color: var(--cuivre-accent) !important;
+}
