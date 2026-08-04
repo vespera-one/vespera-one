@@ -9,14 +9,15 @@
 
 /* On fixe tes 3 couleurs principales pour toute la page */
 :root {
-    --bleu-fond: #121826;     /* 50% : Ton bleu nuit profond */
-    --texte-blanc: #E8E9EC;   /* 30% : Ton crème doux pour les textes */
-    --cuivre-accent: #BF8C6A; /* 20% : Ton cuivre unique pour marquer les détails */
+    --fond-principal: #070b12; /* Bleu nuit ultra-profond */
+    --fond-secondaire: #0e1523; /* Bleu sombre pour les cartes */
+    --texte-blanc: #f5f5f7;    /* Blanc doux */
+    --cuivre-accent: #10885c;  /* Vert émeraude lumineux et chic */
 }
 
 /* On applique le fond bleu et la couleur de texte générale à tout le site */
 body {
-    background-color: var(--bleu-fond);
+    background-color: var(--fond-principal);
     color: var(--texte-blanc);
     font-family: serif; /* On garde ton style de police élégant que tu adores */
     line-height: 1.6;
@@ -463,7 +464,18 @@ body {
     font-size: 1.05rem;
     color: var(--texte-blanc);                      /* Utilise ton blanc global */
 }
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+.portfolio-card {
+    width: 100%;
+}
 /* --- BOÎTE DE CONTACT --- */
 .contact-box {
     background: rgba(18, 24, 38, 0.7);
