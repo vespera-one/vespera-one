@@ -580,18 +580,7 @@ span[style*="color"] {
     color: var(--cuivre-accent) !important;
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-.portfolio-card {
-    width: 100%;
-}
 .contact-box a {
     color: var(--texte-blanc) !important;
     text-decoration: none !important;
@@ -608,18 +597,7 @@ span[style*="color"] {
     border-color: var(--cuivre-accent);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
-.portfolio-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 30px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
 
-.portfolio-card {
-    width: 100% !important;
-}
 
 a.btn-secondaire, 
 .hero-buttons a:nth-child(2), 
@@ -655,60 +633,7 @@ a.btn-secondaire:hover,
     border: none !important;
     outline: none !important;
 }
-/* --- CORRECTION RADICALE POUR LES CARTES DE RÉALISATIONS --- */
-.portfolio-grid, 
-section#portfolio div, 
-.realisations-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 30px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
 
-.portfolio-card, 
-.realisation-card {
-    flex: 1 1 320px !important;
-    max-width: 360px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
-
-/* On force l'affichage en 3 colonnes égales pour tes réalisations */
-.portfolio-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 20px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-
-.portfolio-card {
-    width: 100% !important;
-    max-width: none !important;
-}
-
-/* --- VRAI ALIGNEMENT PROPRE EN 3 COLONNES CENTREES --- */
-.portfolio-grid, 
-.grid, 
-.portfolio-showcase {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 30px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    box-sizing: border-box !important;
-}
-
-.portfolio-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-}
 
 /* --- BOUTONS HERO ULTRA-PRO ET PROpropRES --- */
 .hero-buttons {
@@ -760,4 +685,24 @@ section#portfolio div,
     border-color: #00E676 !important;
     color: #00E676 !important;
     transform: translateY(-2px);
+}
+/* --- FINISH : VRAI ALIGNEMENT PROPRE DES 3 CARTES --- */
+.portfolio-grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 25px !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+.portfolio-card {
+    flex: 1 1 300px !important;
+    max-width: 360px !important;
+    min-height: 250px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
