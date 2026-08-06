@@ -9,17 +9,20 @@
 
 /* On fixe tes 3 couleurs principales pour toute la page */
 :root {
-    --fond-principal: #070b12; /* Bleu nuit ultra-profond */
-    --fond-secondaire: #0e1523; /* Bleu sombre pour les cartes */
-    --texte-blanc: #f5f5f7;    /* Blanc doux */
-    --cuivre-accent: #10885c;  /* Vert émeraude lumineux et chic */
+  --fond-principal: #070b12; /* Bleu nuit encore plus profond et haut de gamme */
+  --fond-secondaire: #0d1527;
+  --texte-blanc: #f8fafc;
+  
+  /* NOVEAU VERT PREMIUM (Ultra dynamique & lumineux) */
+  --vert-accent: #10b981; 
+  --vert-glow: rgba(16, 185, 129, 0.4);
 }
 
 /* On applique le fond bleu et la couleur de texte générale à tout le site */
 body {
     background-color: var(--fond-principal);
     color: var(--texte-blanc);
-    font-family: serif; /* On garde ton style de police élégant que tu adores */
+   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
 }
 /* --- ANIMATION D'APPARITION DE GAUCHE À DROITE --- */
@@ -165,30 +168,32 @@ body {
     flex-wrap: wrap;                  /* Permet aux boutons de passer à la ligne sur les petits écrans de téléphone */
 }
 
-/* --- BOUTON PRINCIPAL (Ex: Réserver / Action principale) --- */
+/* --- BOUTON PRINCIPAL (VERT NÉON / GLOW) --- */
 .btn-primary {
-    background-color: var(--cuivre-accent); /* Ton vrai cuivre en couleur unie */
-    color: var(--bleu-fond);                 /* Le texte prend ton bleu foncé pour contraster */
-    box-shadow: 0 10px 25px rgba(191, 140, 106, 0.25); /* Une ombre discrète aux reflets cuivre */
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #04130e !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4) !important;
+  transition: all 0.3s ease !important;
 }
 
 .btn-primary:hover {
-    transform: translateY(-4px) scale(1.02); /* Le bouton monte légèrement et grandit un tout petit peu */
-    box-shadow: 0 15px 35px rgba(191, 140, 106, 0.4); /* L'ombre s'intensifie quand la souris approche */
-    opacity: 0.95;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6) !important;
 }
 
-/* --- BOUTON SECONDAIRE (Ex: Voir mes réalisations) --- */
+/* --- BOUTON SECONDAIRE --- */
 .btn-secondary {
-    border: 1px solid rgba(191, 140, 106, 0.3); /* Une fine bordure couleur cuivre élégante */
-    color: var(--texte-blanc);                   /* Texte en blanc/crème */
-    background-color: rgba(191, 140, 106, 0.05); /* Fond ultra-légèrement teinté de cuivre */
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  color: #f8fafc !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  transition: all 0.3s ease !important;
 }
 
 .btn-secondary:hover {
-    background-color: rgba(191, 140, 106, 0.12); /* Le fond s'éclaire un peu au survol */
-    border-color: var(--cuivre-accent);          /* La bordure devient 100% couleur cuivre */
-    transform: translateY(-3px);                 /* Petit effet de lévitation vers le haut */
+  background: rgba(16, 185, 129, 0.1) !important;
+  border-color: #10b981 !important;
 }
 
 .full-width {
@@ -704,4 +709,129 @@ a.btn-secondaire:hover,
     flex: 1 !important;
     max-width: 360px !important;
     width: 100% !important;
+}
+
+/* --- ANIMATION DU FOND DÉFILANT (HERO) --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-track {
+  display: flex;
+  width: calc(100vw * 6);
+  height: 100%;
+  animation: defilementFond 20s linear infinite;
+}
+
+.hero-bg-track img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 11, 18, 0.85); /* Voile sombre pour garder le texte bien visible */
+  z-index: 2;
+}
+
+/* On remet le contenu du header au-dessus des images */
+.hero > *:not(.hero-bg-slider) {
+  position: relative;
+  z-index: 3;
+}
+
+/* L'animation de défilement continu */
+@keyframes defilementFond {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100vw * 3));
+  }
+}
+
+/* --- CARROUSEL DES CARTES DE RÉALISATIONS --- */
+.cards-slider-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 30px 0;
+  position: relative;
+}
+
+.cards-slider-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: defilementCartes 18s linear infinite;
+}
+
+/* Pause au survol de la souris */
+.cards-slider-container:hover .cards-slider-track {
+  animation-play-state: paused;
+}
+
+.realisation-card {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--bg-card, #0e1523);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.realisation-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.realisation-card img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.card-info {
+  padding: 16px;
+  text-align: center;
+  background: #090f1a;
+}
+
+.card-info h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.card-info p {
+  font-size: 0.85rem;
+  color: #10b981;
+}
+
+/* ANIMATION DÉFILEMENT DE GAUCHE À DROITE */
+@keyframes defilementCartes {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-304px * 3)); /* 280px largeur + 24px gap */
+  }
 }
