@@ -1,64 +1,67 @@
-/* --- LES BASES DU SITE --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 
-/* On enlève les marges bizarres que les navigateurs mettent par défaut */
+/* --- 1. VARIABLES & RESET --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* On fixe tes 3 couleurs principales pour toute la page */
 :root {
-  --fond-principal: #070b12; /* Bleu nuit encore plus profond et haut de gamme */
-  --fond-secondaire: #0d1527;
-  --texte-blanc: #f8fafc;
-  
-  /* NOVEAU VERT PREMIUM (Ultra dynamique & lumineux) */
-  --vert-accent: #10b981; 
-  --vert-glow: rgba(16, 185, 129, 0.4);
+    --fond-principal: #070b12;
+    --fond-secondaire: #0d1527;
+    --fond-carte: #1a2233;
+    --texte-blanc: #f8fafc;
+    --vert-accent: #15803d;
+    --vert-hover: #166534;
+    --vert-glow: rgba(21, 128, 61, 0.3);
+    --or-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
 }
 
-/* On applique le fond bleu et la couleur de texte générale à tout le site */
 body {
     background-color: var(--fond-principal);
     color: var(--texte-blanc);
-   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
-/* --- ANIMATION D'APPARITION DE GAUCHE À DROITE --- */
 
+/* --- 2. ANIMATIONS --- */
 @keyframes glisseGauche {
     0% {
         opacity: 0;
-        transform: translateX(-40px); /* L'élément commence un peu plus à gauche et invisible */
+        transform: translateX(-40px);
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* Il arrive à sa position finale et s'affiche parfaitement */
+        transform: translateX(0);
     }
 }
 
-/* On applique cet effet sur ton gros titre principal */
+@keyframes defilementFond {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100vw * 3)); }
+}
+
+@keyframes defilementCartes {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(calc(-304px * 3), 0, 0); }
+}
+
 .h1 {
     animation: glisseGauche 0.8s ease-out forwards;
 }
-/* --- BARRE DE NAVIGATION (LE MENU EN HAUT) --- */
-.navbar {
-    position: fixed;        /* Elle reste collée en haut même quand tu scrolles */
-    top: 0;                 /* Elle se colle tout en haut de l'écran */
-    width: 100%;            /* Elle prend toute la largeur de l'écran */
-    background: rgba(18, 24, 38, 0.9); /* Ton bleu de fond, mais légèrement transparent */
-    backdrop-filter: blur(15px);        /* Effet de verre poli / flou derrière la barre */
-    z-index: 1000;          /* Elle s'affiche bien au-dessus de tout le reste du site */
-    padding: 14px 24px;     /* Espace vide à l'intérieur (haut/bas et côtés) */
-}
 
-.nav-container {
-    max-width: 1200px;      /* Empêche le menu de s'étaler trop sur les grands écrans */
-    margin: 0 auto;         /* Centre le menu parfaitement au milieu */
-    display: flex;          /* Range les éléments côte à côte (le logo à gauche, les liens à droite) */
-    justify-content: space-between; /* Met de l'espace maximum entre le logo et les liens */
-    align-items: center;    /* Aligne tout le monde bien au milieu verticalement */
+/* --- 3. BARRE DE NAVIGATION --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(18, 24, 38, 0.9);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-container {
@@ -69,453 +72,6 @@ body {
     align-items: center;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.logo-img {
-    height: 42px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.nav-link {
-    color: var(--texte-blanc);        /* On utilise ton blanc/crème pour que tes liens soient bien lisibles */
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: opacity 0.2s ease;    /* Une transition simple et douce */
-    opacity: 0.8;                     /* Légèrement transparent par défaut pour faire élégant */
-}
-
-.nav-link:hover {
-    opacity: 1;                       /* Devient bien blanc et net quand on pose la souris dessus */
-    color: var(--cuivre-accent);      /* Et prend ta couleur cuivre pour marquer le coup ! */
-}
-
-.nav-btn {
-    background-color: var(--cuivre-accent); /* Ton vrai cuivre en couleur unie, propre et net */
-    color: var(--bleu-fond);                 /* Le texte prend ton bleu foncé pour bien contraster */
-    padding: 10px 22px;
-    border-radius: 6px;                      /* Des coins légèrement arrondis, style moderne et pro */
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: opacity 0.2s ease;           /* Une transition simple et douce */
-}
-
-.nav-btn:hover {
-    opacity: 0.85;                           /* Le bouton s'éclaircit légèrement quand la souris passe dessus */
-}
-
-/* --- SECTION D'ACCUEIL (LE HAUT DE PAGE) --- */
-.hero {
-    padding: 170px 20px 90px; /* Espace vide autour du texte pour qu'il respire */
-    text-align: center;       /* Centre tout le texte au milieu */
-    max-width: 950px;         /* Empêche le texte de s'étaler sur les côtés */
-    margin: 0 auto;           /* Centre parfaitement la boîte */
-}
-
-/* Le petit badge stylé au-dessus du grand titre */
-.badge {
-    display: inline-block;
-    padding: 8px 20px;
-    background: #15803d(191, 140, 106, 0.1); /* Utilise ton cuivre en version ultra-légère et transparente */
-    border: 1px solid #4ade80(191, 140, 106, 0.3); /* Une fine bordure discrète en couleur cuivre */
-    border-radius: 30px;                      /* Forme de pilule arrondie */
-    color: var(--cuivre-accent);              /* Texte aux couleurs de ton cuivre */
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 25px;
-    letter-spacing: 0.5px;                    /* Espace légèrement les lettres pour un effet pro */
-}
-
-/* Le grand titre principal de la page */
-.hero h1 {
-    font-size: 3.3rem;
-    font-weight: 800;
-    margin-bottom: 22px;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    color: #FFFFFF;
-}
-
-/* Le paragraphe d'introduction sous ton titre principal */
-.hero p {
-    font-size: 1.15rem;
-    color: var(--texte-blanc);        /* On utilise ton blanc/crème global pour une belle lisibilité */
-    opacity: 0.85;                    /* Légèrement adouci pour faire un contraste élégant avec le titre */
-    margin-bottom: 35px;
-    max-width: 750px;                 /* Empêche les lignes de texte d'être trop longues à lire */
-    margin-left: auto;                /* Centre le paragraphe parfaitement */
-    margin-right: auto;               /* Centre le paragraphe parfaitement */
-}
-
-/* La zone qui aligne tes boutons d'action en haut */
-.hero-buttons {
-    display: flex;
-    gap: 18px;                        /* Espace propre entre les deux boutons */
-    justify-content: center;          /* Centre les boutons au milieu */
-    flex-wrap: wrap;                  /* Permet aux boutons de passer à la ligne sur les petits écrans de téléphone */
-}
-
-/* --- BOUTON PRINCIPAL (VERT NÉON / GLOW) --- */
-.btn-primary {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-  color: #04130e !important;
-  font-weight: 700 !important;
-  border: none !important;
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4) !important;
-  transition: all 0.3s ease !important;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6) !important;
-}
-
-/* --- BOUTON SECONDAIRE --- */
-.btn-secondary {
-  border: 1px solid rgba(16, 185, 129, 0.4) !important;
-  color: #f8fafc !important;
-  background: rgba(255, 255, 255, 0.03) !important;
-  transition: all 0.3s ease !important;
-}
-
-.btn-secondary:hover {
-  background: rgba(16, 185, 129, 0.1) !important;
-  border-color: #10b981 !important;
-}
-
-.full-width {
-    width: 100%;
-    text-align: center;
-}
-
-/* --- STRUCTURES GÉNÉRALES --- */
-
-/* Une section avec un fond légèrement différent */
-.bg-alt {
-    background-color: rgba(255, 255, 255, 0.015); /* Ton fond très légèrement grisé pour les sections alternées */
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-/* Le conteneur principal qui centre le contenu sur 1150px */
-.container {
-    max-width: 1150px;
-    margin: 0 auto;         /* Centre la boîte */
-    padding: 0 20px;        /* Ajoute un petit coussin sur les côtés pour pas que le texte touche le bord sur mobile */
-}
-
-/* Un conteneur plus petit pour les textes d'intro (limité à 650px) */
-.small-container {
-    max-width: 650px;
-    margin: 0 auto;         /* Centre la boîte */
-    padding: 0 20px;
-}
-
-/* --- TITRES DE SECTION --- */
-
-/* Le titre principal de chaque section (ex: Nos Services) */
-.section-title {
-    text-align: center;
-    font-size: 2.3rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    color: var(--texte-blanc); /* Utilise ta variable globale pour le blanc */
-}
-
-/* Le sous-titre juste en dessous du titre de section */
-.section-subtitle {
-    text-align: center;
-    color: var(--texte-blanc); /* On utilise ton blanc ici aussi pour que ce soit très lisible */
-    opacity: 0.7;             /* Légèrement transparent pour le rendre secondaire par rapport au titre */
-    margin-bottom: 55px;
-    font-size: 1.05rem;
-    max-width: 600px;         /* Pour éviter que le sous-titre ne s'étale trop sur la largeur */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* --- GRILLE ET CARTES DE SERVICES --- */
-
-/* La grille qui aligne tes cartes proprement côte à côte */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* S'adapte tout seul à la taille de l'écran */
-    gap: 30px; /* Espace vide entre chaque carte */
-}
-
-/* Le style de base d'une carte */
-.card {
-    background: rgba(18, 24, 38, 0.6); /* Fond semi-transparent de ton bleu de base */
-    border: 1px solid rgba(255, 255, 255, 0.07); /* Fine bordure discrète */
-    padding: 35px 30px;
-    border-radius: 20px; /* Coins bien arrondis */
-    transition: all 0.35s ease; /* Rend tous les mouvements doux et fluides */
-}
-
-/* Quand on passe la souris sur une carte */
-.card:hover {
-    transform: translateY(-8px); /* La carte monte légèrement vers le haut */
-    border-color: rgba(191, 140, 106, 0.4); /* La bordure se teinte subtilement de ton cuivre */
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5); /* Une belle ombre portée pour donner du relief */
-}
-
-/* L'icône à l'intérieur de la carte */
-.card-icon {
-    font-size: 2.4rem;
-    margin-bottom: 18px;
-    color: var(--cuivre-accent); /* Tes icônes prennent ta magnifique couleur cuivre */
-}
-
-/* Le titre à l'intérieur de la carte */
-.card h3 {
-    margin-bottom: 12px;
-    font-size: 1.3rem;
-    color: var(--texte-blanc); /* Utilise ton blanc global */
-}
-
-/* Le texte descriptif à l'intérieur de la carte */
-.card p {
-    color: var(--texte-blanc); /* Utilise ton blanc global */
-    opacity: 0.75;             /* Légèrement adouci pour faire un beau contraste avec le titre */
-    font-size: 0.98rem;
-    line-height: 1.5;          /* Espace un peu les lignes pour que ce soit facile à lire */
-}
-
-/* --- SECTION TARIFS --- */
-
-/* Le style de base d'une carte de prix */
-.pricing-card {
-    background: rgba(18, 24, 38, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    padding: 40px 30px;
-    border-radius: 24px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.35s ease;
-}
-
-/* La carte mise en avant (la formule recommandée par exemple) */
-.pricing-card.featured {
-    border: 2px solid var(--cuivre-accent);          /* Une belle bordure nette en couleur cuivre */
-    background: rgba(191, 140, 106, 0.04);           /* Un fond ultra-légèrement teinté de ton cuivre (fini le doré !) */
-    box-shadow: 0 0 35px rgba(191, 140, 106, 0.12);  /* Une lueur douce et propre aux reflets cuivre */
-}
-
-/* Le petit badge "Populaire" ou "Recommandé" tout en haut de la carte */
-.popular-badge {
-    position: absolute;
-    top: -14px;
-    right: 25px;
-    background-color: var(--cuivre-accent);          /* Ton vrai cuivre en couleur unie, net et pro */
-    color: var(--bleu-fond);                         /* Texte sombre pour contraster parfaitement */
-    font-size: 0.75rem;
-    font-weight: 800;
-    padding: 5px 14px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
-}
-
-/* Le montant du prix affiché dans la carte */
-.price {
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin: 15px 0 25px;
-    color: var(--texte-blanc);                       /* Utilise ton blanc global */
-}
-
-/* La liste des fonctionnalités incluses dans le tarif */
-.features {
-    list-style: none;
-    margin-bottom: 35px;
-    flex-grow: 1;
-}
-
-/* Chaque ligne de la liste des fonctionnalités */
-.features li {
-    margin-bottom: 14px;
-    color: var(--texte-blanc);                       /* Utilise ton blanc global */
-    opacity: 0.8;                                    /* Légèrement adouci pour un beau confort visuel */
-    font-size: 0.95rem;
-}
-
-/* --- AVIS & RÉALISATIONS --- */
-
-/* La bannière globale qui affiche la note moyenne (ex: 4.9/5) */
-.rating-banner {
-    text-align: center;
-    background: rgba(191, 140, 106, 0.05);          /* Fond ultra-léger aux reflets cuivre (fini le doré !) */
-    border: 1px solid rgba(191, 140, 106, 0.2);     /* Fine bordure propre en couleur cuivre */
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 45px;
-}
-
-/* Le chiffre de la note (ex: 4.9) */
-.rating-banner .score {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: var(--cuivre-accent);                     /* En couleur cuivre pour attirer l'œil */
-}
-
-/* Les étoiles dans la bannière */
-.rating-banner .stars {
-    color: var(--cuivre-accent);                     /* Vos étoiles prennent la couleur cuivre */
-    font-size: 1.5rem;
-    letter-spacing: 3px;
-    margin: 5px 0;
-}
-
-/* Le texte sous la note (ex: 127+ clientes satisfaites) */
-.total-reviews {
-    color: var(--texte-blanc);                       /* Utilise ton blanc global */
-    opacity: 0.7;                                    /* Légèrement adouci */
-    font-size: 0.95rem;
-}
-
-/* Les étoiles individuelles sur chaque carte d'avis */
-.review-stars {
-    color: var(--cuivre-accent);                     /* En couleur cuivre */
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-}
-
-/* Le texte de l'avis client */
-.review-text {
-    font-style: italic;
-    color: var(--texte-blanc);                       /* Utilise ton blanc global */
-    opacity: 0.9;
-    margin-bottom: 18px;
-}
-
-/* Le nom de l'auteur de l'avis */
-.review-author {
-    font-weight: 700;
-    font-size: 0.88rem;
-    color: var(--cuivre-accent);                     /* En couleur cuivre pour bien identifier l'auteur */
-}
-
-/* --- PORTFOLIO & RÉALISATIONS --- */
-
-.portfolio-showcase {
-    margin-top: 70px;
-}
-
-.portfolio-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: var(--texte-blanc);                     /* Utilise ton blanc global */
-}
-
-/* La carte de réalisation */
-.portfolio-card {
-    background: rgba(18, 24, 38, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: all 0.35s ease;
-}
-
-/* Quand on passe la souris sur la carte du portfolio */
-.portfolio-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--cuivre-accent);             /* La bordure devient subtilement couleur cuivre */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);     /* Belle ombre portée élégante */
-}
-
-.portfolio-screen {
-    height: 190px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* Fonds discrets et élégants pour les 3 aperçus */
-.screen-1 { background: linear-gradient(135deg, #0f172a, #1e293b); }
-.screen-2 { background: linear-gradient(135deg, #111827, #1f2937); }
-.screen-3 { background: linear-gradient(135deg, #0b0f19, #111827); }
-
-/* Le petit tag / badge sur l'image de réalisation */
-.preview-tag {
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(5px);
-    color: var(--texte-blanc);                      /* Utilise ton blanc global */
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Le titre de la carte portfolio */
-.portfolio-card h4 {
-    padding: 18px;
-    text-align: center;
-    font-size: 1.05rem;
-    color: var(--texte-blanc);                      /* Utilise ton blanc global */
-}
-
-/* --- BOÎTE DE CONTACT --- */
-.contact-box {
-    background: rgba(18, 24, 38, 0.7);
-    border: 1px solid rgba(191, 140, 106, 0.25); /* Bordure propre aux reflets cuivre */
-    padding: 40px;
-    border-radius: 24px;
-    text-align: center;
-}
-
-.fast-reply-badge {
-    display: inline-block;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: #10b981;
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-}
-
-.contact-email-direct {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    color: var(--texte-blanc);
-}
-
-/* --- FOOTER --- */
-footer {
-    text-align: center;
-    padding: 35px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: #6b7280;
-    font-size: 0.88rem;
-}
-
-/* --- MOBILE --- */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.2rem; }
-    .nav-menu { display: none; }
-}
-
-/* Import de la police Playfair Display pour le logo */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
-/* Style du logo typographique */
 .logo-typographique {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
@@ -528,449 +84,587 @@ footer {
 }
 
 .logo-typographique:hover {
-    color: var(--cuivre-accent);
+    color: var(--vert-accent);
 }
 
-/* --- BOUTONS ET CTA --- */
-.card-cta {
-    display: block !important;
-    margin-top: 25px !important;
-    padding: 14px 20px !important;
-    background-color: var(--cuivre-accent) !important;
-    color: var(--bleu-fond) !important;
-    text-decoration: none !important;
-    border-radius: 8px !important;
-    font-weight: 700 !important;
-    font-size: 15px !important;
-    text-align: center !important;
-    box-shadow: 0 4px 15px rgba(191, 140, 106, 0.2) !important;
-    transition: all 0.3s ease !important;
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
 }
 
-.card-cta:hover {
-    background-color: transparent !important;
-    color: var(--cuivre-accent) !important;
-    border: 2px solid var(--cuivre-accent) !important;
+.nav-link {
+    color: var(--texte-blanc);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    opacity: 0.8;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--vert-accent);
+}
+
+.nav-btn {
+    background-color: var(--vert-accent);
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--vert-hover);
     transform: translateY(-2px);
 }
 
-/* Application de la nouvelle identité Cuivre et Gris Ardoise */
-.pricing-card, .card, .contact-box {
-    background-color: #1a2233 !important;
-    border: 1px solid rgba(191, 140, 106, 0.25) !important;
+/* Menu Burger Mobile */
+.menu-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
 }
 
-/* Boutons principaux et CTA en Cuivre */
-.btn-primary,
-.card-cta,
-.btn-offre,
-.nav-cta {
-    background-color: var(--cuivre-accent) !important;
-    color: var(--bleu-fond) !important;
-    border: 2px solid var(--cuivre-accent) !important;
-    font-weight: 700 !important;
+.menu-burger span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--texte-blanc);
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-.btn-primary:hover,
-.card-cta:hover,
-.btn-offre:hover {
-    background-color: transparent !important;
-    color: var(--cuivre-accent) !important;
-}
-
-/* Accents et étoiles en Cuivre */
-.gold-gradient-text,
-.stars,
-span[style*="color"] {
-    color: var(--cuivre-accent) !important;
-}
-
-
-.contact-box a {
-    color: var(--texte-blanc) !important;
-    text-decoration: none !important;
-}
-.contact-box a:hover {
-    color: var(--cuivre-accent) !important;
-}
-
-.card-cta {
-    text-decoration: none !important;
-}
-.pricing-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--cuivre-accent);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-
-a.btn-secondaire, 
-.hero-buttons a:nth-child(2), 
-.portfolio-cta {
-    text-decoration: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    padding: 14px 20px !important;
-    border-radius: 8px !important;
-    color: var(--texte-blanc) !important;
-    transition: all 0.3s ease !important;
-}
-
-a.btn-secondaire:hover, 
-.hero-buttons a:nth-child(2):hover {
-    border-color: var(--cuivre-accent) !important;
-    color: var(--cuivre-accent) !important;
-}
-/* On force la même taille et les mêmes dimensions pour les deux boutons du Hero */
-.hero-buttons a {
-    display: inline-block !important;
-    width: 260px !important; /* Ajuste cette valeur si tu les veux un peu plus grands ou plus petits */
-    text-align: center !important;
-    box-sizing: border-box !important;
-    padding: 14px 20px !important;
-    border-radius: 8px !important;
-    font-weight: 700 !important;
-    font-size: 15px !important;
-    text-decoration: none !important;
-}
-
-/* On enlève la ligne blanche sur le premier bouton */
-.hero-buttons a:nth-child(1) {
-    border: none !important;
-    outline: none !important;
-}
-
-
-/* --- BOUTONS HERO ULTRA-PRO ET PROpropRES --- */
-.hero-buttons {
-    display: flex !important;
-    gap: 20px !important;
-    justify-content: center !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    margin-top: 30px !important;
-}
-
-.hero-buttons a {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: 250px !important;
-    min-height: 52px !important;
-    padding: 12px 24px !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    box-sizing: border-box !important;
-    transition: all 0.3s ease !important;
-    line-height: 1.2 !important;
-}
-
-/* Premier bouton : Vert émeraude plein et chic */
-.hero-buttons a:nth-child(1) {
-    background-color: #00E676 !important; /* Un beau vert vif et propre */
-    color: #0b0f19 !important;
-    border: none !important;
-}
-
-.hero-buttons a:nth-child(1):hover {
-    opacity: 0.9 !important;
-    transform: translateY(-2px);
-}
-
-/* Deuxième bouton : Contour élégant propre */
-.hero-buttons a:nth-child(2) {
-    background-color: transparent !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-}
-
-.hero-buttons a:nth-child(2):hover {
-    border-color: #00E676 !important;
-    color: #00E676 !important;
-    transform: translateY(-2px);
-}
-
-/* --- ALIGNEMENT FINAL PORTFOLIO --- */
-.portfolio-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: stretch !important;
-    gap: 25px !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 30px auto 0 auto !important;
-}
-
-.portfolio-card {
-    flex: 1 !important;
-    max-width: 360px !important;
-    width: 100% !important;
-}
-
-/* --- ANIMATION DU FOND DÉFILANT (HERO) --- */
+/* --- 4. HERO SECTION --- */
 .hero {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    padding: 170px 20px 90px;
+    text-align: center;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--fond-secondaire);
 }
 
-/* FOND HERO PLEIN ÉCRAN ET PROPRE */
-.hero-bg-slider img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Remplit tout l'espace proprement */
-  object-position: center;
+.hero-bg-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .hero-bg-track {
-  display: flex;
-  width: calc(100vw * 6);
-  height: 100%;
-  animation: defilementFond 20s linear infinite;
+    display: flex;
+    width: calc(100vw * 6);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: defilementFond 20s linear infinite;
 }
 
 .hero-bg-track img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.25;
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(7, 11, 18, 0.85); /* Voile sombre pour garder le texte bien visible */
-  z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(7,11,18,0.6) 0%, rgba(7,11,18,0.95) 100%);
+    z-index: 2;
 }
 
-/* On remet le contenu du header au-dessus des images */
 .hero > *:not(.hero-bg-slider) {
-  position: relative;
-  z-index: 3;
+    position: relative;
+    z-index: 3;
 }
 
-/* L'animation de défilement continu */
-@keyframes defilementFond {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100vw * 3));
-  }
+.badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(21, 128, 61, 0.15);
+    border: 1px solid rgba(21, 128, 61, 0.4);
+    border-radius: 30px;
+    color: #4ade80;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
 }
 
-/* --- CARROUSEL DES CARTES DE RÉALISATIONS --- */
-.cards-slider-container {
-  width: 100%;
-  overflow: hidden;
-  padding: 30px 0;
-  position: relative;
+.hero h1 {
+    font-size: 3.3rem;
+    font-weight: 800;
+    margin-bottom: 22px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    max-width: 900px;
 }
 
-.cards-slider-track {
-  display: flex;
-  gap: 24px;
-  width: max-content;
-  animation: defilementCartes 15s linear infinite;
+.hero p {
+    font-size: 1.15rem;
+    color: var(--texte-blanc);
+    opacity: 0.85;
+    margin-bottom: 35px;
+    max-width: 750px;
 }
 
-/* Pause au survol de la souris */
-.cards-slider-container:hover .cards-slider-track {
-  animation-play-state: paused;
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
-.realisation-card {
-  width: 280px;
-  flex-shrink: 0;
-  background: var(--bg-card, #0e1523);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease;
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 240px;
+    min-height: 52px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.realisation-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(16, 185, 129, 0.5);
-}
-
-.realisation-card img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-}
-
-.card-info {
-  padding: 16px;
-  text-align: center;
-  background: #090f1a;
-}
-
-.card-info h3 {
-  font-size: 1.1rem;
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.card-info p {
-  font-size: 0.85rem;
-  color: #10b981;
-}
-
-/* ANIMATION DÉFILEMENT DE GAUCHE À DROITE */
-@keyframes defilementCartes {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-304px * 3)); /* 280px largeur + 24px gap */
-  }
-}
-
-/* --- BOUTON RÉSEAUX SOCIAUX & FICHE GOOGLE --- */
-.social-btn {
-  display: inline-block;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  color: #f8fafc;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.social-btn:hover {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: #10b981;
-  color: #10b981;
-  transform: translateY(-2px);
-}
-
-/* ===================================================
-   COULEUR VERT PROPRE (APPLIQUÉE AUX BONS ENDROITS)
-   =================================================== */
-
-/* --- 1. MOTS & HIGHLIGHTS DANS LES TITRES --- */
-.gold-gradient-text,
-.green-text,
-.highlight-green {
-  color:#15803d !important;
-  background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  font-weight: 700 !important;
-}
-
-/* --- 2. BADGES & ENCADRÉS --- */
-.hero-badge,
-.fast-reply-badge {
-  background: rgba(16, 185, 129, 0.1) !important;
-  border: 1px solid rgba(16, 185, 129, 0.3) !important;
-  color: #10b981 !important;
-}
-
-/* --- 3. SECTION TARIFS (RETOUR DES COULEURS) --- */
-/* Bordure et effet sur la carte "Business Ultra" */
-.pricing-card.popular,
-.pricing-card.featured,
-.pricing-card:nth-child(2) {
-  border: 2px solid #15803d !important;
-  box-shadow: 0 0 25px rgba(16, 185, 129, 0.25) !important;
-}
-
-/* Badge "Le Plus Choisi" */
-.popular-badge,
-.badge-popular {
-  background: #15803d !important;
-  color: #04130e !important;
-  font-weight: 700 !important;
-}
-
-/* Les cochettes ✓ devant chaque argument */
-.pricing-card ul li {
-  color: #e2e8f0;
-}
-
-/* Si tes cochettes sont des caractères texte ou des icônes */
-.pricing-card ul li::marker,
-.pricing-card ul li span.check {
-  color: #10b981 !important;
-}
-
-/* --- 4. BOUTON ACTION PRINCIPAL --- */
 .btn-primary {
-  background: linear-gradient(135deg, #15803d 0%, #059669 100%) !important;
-  color: #ffffff !important;
-  border: none !important;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+    background: var(--vert-accent);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 15px var(--vert-glow);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5) !important;
+    background-color: var(--vert-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--vert-glow);
 }
 
-/* --- 5. LIENS ET CONTACT --- */
-.contact-box p a,
-.social-links-box p {
-  color: #15803d !important;
+.btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* ===================================================
-   PERSONNALISATION EN VERT SAUGE / FORÊT (#15803d)
-   =================================================== */
-
-/* 1. Bouton "Nous contacter" dans le menu du haut */
-.nav-links a[href*="contact"],
-header .btn-contact,
-header a:last-child {
-  background-color: #15803d !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  padding: 8px 18px !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease !important;
+.btn-secondary:hover {
+    border-color: var(--vert-accent);
+    color: var(--vert-accent);
+    transform: translateY(-2px);
 }
 
-.nav-links a[href*="contact"]:hover {
-  background-color: #166534 !important;
-  box-shadow: 0 4px 15px rgba(21, 128, 61, 0.4) !important;
+/* --- 5. SECTIONS & CONTAINERS --- */
+.section {
+    padding: 90px 0;
 }
 
-/* 2. Les métiers sous les cartes de réalisations */
-.project-card p,
-.realisation-card p,
-.project-category,
-.project-subtitle {
-  color: #15803d !important;
-  font-weight: 600 !important;
+.bg-alt {
+    background-color: rgba(255, 255, 255, 0.015);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* 3. Toutes les étoiles ★ de la section Avis */
-.stars,
-.star,
-.rating-stars,
-.testimonial-stars,
-.review-stars {
-  color: #15803d !important;
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* 4. Le mot-clé en vert dans les titres (Ex: "récentes") */
-.green-text,
-.highlight-green {
-  color: #15803d !important;
-  background: none !important;
-  -webkit-text-fill-color: #15803d !important;
-  font-weight: 700 !important;
+.small-container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--texte-blanc);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--texte-blanc);
+    opacity: 0.7;
+    margin-bottom: 55px;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* TEXTES & COULEURS D'ACCENTUATION */
+.green-text {
+    color: #4ade80;
+    font-weight: 700;
+}
+
+.gold-gradient-text {
+    background: var(--or-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* --- 6. SERVICES & TARIFS (GRID & CARDS) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--fond-carte);
+    border: 1px solid rgba(21, 128, 61, 0.25);
+    padding: 35px 30px;
+    border-radius: 20px;
+    transition: all 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--vert-accent);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    color: var(--texte-blanc);
+}
+
+.card p {
+    color: var(--texte-blanc);
+    opacity: 0.75;
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+/* CARTES TARIFS */
+.pricing-card {
+    background: var(--fond-carte);
+    border: 1px solid rgba(21, 128, 61, 0.25);
+    padding: 40px 30px;
+    border-radius: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s ease;
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--vert-accent);
+    box-shadow: 0 0 25px var(--vert-glow);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -14px;
+    right: 25px;
+    background-color: var(--vert-accent);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 5px 14px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+}
+
+.price {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 15px 0 25px;
+    color: var(--texte-blanc);
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 35px;
+    flex-grow: 1;
+}
+
+.features li {
+    margin-bottom: 14px;
+    color: var(--texte-blanc);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+.card-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--vert-accent);
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
+}
+
+.card-cta:hover {
+    background: var(--vert-hover);
+}
+
+/* --- 7. AVIS CLIENTS --- */
+.rating-banner {
+    text-align: center;
+    background: rgba(21, 128, 61, 0.05);
+    border: 1px solid rgba(21, 128, 61, 0.2);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 45px;
+}
+
+.rating-banner .score {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #4ade80;
+}
+
+.stars, .review-stars {
+    color: #f59e0b;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.total-reviews {
+    color: var(--texte-blanc);
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+.review-text {
+    font-style: italic;
+    color: var(--texte-blanc);
+    opacity: 0.9;
+    margin-bottom: 18px;
+}
+
+.review-author {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #4ade80;
+}
+
+/* --- 8. CARROUSEL DE RÉALISATIONS --- */
+.cards-slider-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+.cards-slider-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: defilementCartes 18s linear infinite;
+    will-change: transform;
+}
+
+.cards-slider-container:hover .cards-slider-track {
+    animation-play-state: paused;
+}
+
+.realisation-card {
+    width: 280px;
+    flex-shrink: 0;
+    background: #0e1523;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.realisation-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--vert-accent);
+}
+
+.realisation-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.card-info {
+    padding: 16px;
+    text-align: center;
+    background: #090f1a;
+}
+
+.card-info h3 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.card-info p {
+    font-size: 0.85rem;
+    color: #4ade80;
+    font-weight: 600;
+}
+
+/* --- 9. CONTACT & FORMULAIRE --- */
+.contact-box {
+    background: var(--fond-carte);
+    border: 1px solid rgba(21, 128, 61, 0.25);
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.fast-reply-badge {
+    display: inline-block;
+    background: rgba(21, 128, 61, 0.1);
+    border: 1px solid rgba(21, 128, 61, 0.3);
+    color: #4ade80;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(21, 128, 61, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--vert-accent);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.social-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--texte-blanc);
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    border-color: var(--vert-accent);
+    color: #4ade80;
+}
+
+/* --- 10. FOOTER --- */
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #6b7280;
+    font-size: 0.88rem;
+}
+
+/* --- 11. MEDIA QUERIES (MOBILE) --- */
+@media (max-width: 768px) {
+    .menu-burger {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(13, 21, 39, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 100px 30px 40px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .contact-box {
+        padding: 25px 18px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
 }

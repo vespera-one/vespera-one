@@ -1,70 +1,86 @@
 /**
  * ================================================================
- * VESPERA-ONE - INTERACTIVE LANDING PAGE
+ * VESPERA-ONE - INTERACTIVE LANDING PAGE (OPTIMIZED)
  * ================================================================
- * Animations fluides, interactions, gestion du formulaire & modales
  */
-
-// ================================================================
-// 1. CONFIGURATION GLOBALE
-// ================================================================
 
 const CONFIG = {
     navbarFixed: true,
-    smoothScroll: true,
     animationsEnabled: true,
-    formEnabled: true,
+    formEnabled: false,
     modalEnabled: true
 };
 
 // ================================================================
-// 2. CLASSE POUR LA NAVIGATION
+// 1. GESTION DE LA NAVIGATION & MENU BURGER
 // ================================================================
 
 class Navigation {
     constructor() {
         this.navbar = document.querySelector('.navbar');
-        this.hamburger = document.getElementById('hamburger');
+        this.burgerBtn = document.querySelector('.menu-burger');
         this.navMenu = document.getElementById('navMenu');
-        this.navLinks = document.querySelectorAll('.nav-link');
+        this.navLinks = document.querySelectorAll('.nav-link, .nav-btn');
         
         this.init();
     }
     
     init() {
-        // Toggle menu
-        this.hamburger?.addEventListener('click', () => this.toggleMenu());
+        // Toggle menu au clic sur le burger
+        if (this.burgerBtn) {
+            this.burgerBtn.addEventListener('click', () => this.toggleMenu());
+        }
         
         // Fermer le menu au clic sur un lien
         this.navLinks.forEach(link => {
             link.addEventListener('click', () => this.closeMenu());
         });
         
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => this.onScroll());
+        // Fermer le menu si clic à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (this.navMenu && this.navMenu.classList.contains('active')) {
+                const isClickInside = this.navMenu.contains(e.target) || (this.burgerBtn && this.burgerBtn.contains(e.target));
+                if (!isClickInside) {
+                    this.closeMenu();
+                }
+            }
+        });
+        
+        // Effet de scroll sur la navbar
+        window.addEventListener('scroll', () => this.onScroll(), { passive: true });
     }
     
     toggleMenu() {
-        this.hamburger.classList.toggle('active');
-        this.navMenu.classList.toggle('active');
+        if (this.burgerBtn) this.burgerBtn.classList.toggle('active');
+        if (this.navMenu) this.navMenu.classList.toggle('active');
     }
     
     closeMenu() {
-        this.hamburger.classList.remove('active');
-        this.navMenu.classList.remove('active');
+        if (this.burgerBtn) this.burgerBtn.classList.remove('active');
+        if (this.navMenu) this.navMenu.classList.remove('active');
     }
     
     onScroll() {
-        if (window.scrollY > 50) {
-            this.navbar.classList.add('scrolled');
-        } else {
-            this.navbar.classList.remove('scrolled');
+        if (this.navbar) {
+            if (window.scrollY > 50) {
+                this.navbar.classList.add('scrolled');
+            } else {
+                this.navbar.classList.remove('scrolled');
+            }
         }
     }
 }
 
+// Fonction globale de secours pour le onclick="" du HTML
+function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const burgerBtn = document.querySelector('.menu-burger');
+    if (navMenu) navMenu.classList.toggle('active');
+    if (burgerBtn) burgerBtn.classList.toggle('active');
+}
+
 // ================================================================
-// 3. INTERSECTION OBSERVER POUR ANIMATIONS AU SCROLL
+// 2. INTERSECTION OBSERVER POUR ANIMATIONS
 // ================================================================
 
 class ScrollAnimations {
@@ -75,7 +91,7 @@ class ScrollAnimations {
     initObserver() {
         const options = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
@@ -87,15 +103,12 @@ class ScrollAnimations {
             });
         }, options);
         
-        // Observer tous les éléments avec data-aos
-        document.querySelectorAll('[data-aos]').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
     }
 }
 
 // ================================================================
-// 4. CLASSE POUR LA GESTION DU FORMULAIRE
+// 3. GESTION DU FORMULAIRE ET WHATSAPP
 // ================================================================
 
 class FormHandler {
@@ -111,63 +124,54 @@ class FormHandler {
     init() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         
-        // Ajouter des listeners pour l'animation du label
         const inputs = this.form.querySelectorAll('input, textarea');
         inputs.forEach(input => {
-            input.addEventListener('focus', (e) => this.onInputFocus(e));
-            input.addEventListener('blur', (e) => this.onInputBlur(e));
+            input.addEventListener('focus', (e) => e.target.style.borderColor = 'var(--accent)');
+            input.addEventListener('blur', (e) => {
+                if (!e.target.value.trim()) {
+                    e.target.style.borderColor = 'var(--border)';
+                }
+            });
         });
-    }
-    
-    onInputFocus(e) {
-        e.target.style.borderColor = 'var(--accent)';
-    }
-    
-    onInputBlur(e) {
-        if (!e.target.value.trim()) {
-            e.target.style.borderColor = 'var(--border)';
-        }
     }
     
     handleSubmit(e) {
         e.preventDefault();
         
-        // Récupérer les données
-        const name = this.form.querySelector('#name').value;
-        const email = this.form.querySelector('#email').value;
-        const company = this.form.querySelector('#company').value;
-        const message = this.form.querySelector('#message').value;
+        const name = this.form.querySelector('#name')?.value;
+        const email = this.form.querySelector('#email')?.value;
+        const company = this.form.querySelector('#company')?.value || 'Non précisé';
+        const message = this.form.querySelector('#message')?.value;
         
-        // Validation simple
-        if (!name || !email || !company || !message) {
-            this.showToast('Veuillez remplir tous les champs', 'error');
+        if (!name || !email || !message) {
+            this.showToast('Veuillez remplir les champs obligatoires.', 'error');
             return;
         }
         
-        // Validation email
         if (!this.isValidEmail(email)) {
-            this.showToast('Email invalide', 'error');
+            this.showToast('Adresse email invalide.', 'error');
             return;
         }
         
-        // Simuler l'envoi
-        const submitBtn = this.form.querySelector('.btn-primary');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Envoi en cours...';
-        submitBtn.disabled = true;
+        const submitBtn = this.form.querySelector('button[type="submit"]') || this.form.querySelector('.btn-primary');
+        const originalText = submitBtn ? submitBtn.textContent : '';
+        if (submitBtn) {
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+        }
         
         setTimeout(() => {
-            // Envoyer via WhatsApp
-            const message_text = `Bonjour, je m'appelle ${name}. Mon email: ${email}. Mon entreprise: ${company}. Message: ${message}`;
-            const encoded_message = encodeURIComponent(message_text);
-            window.open(`https://wa.me/33774306147?text=${encoded_message}`, '_blank');
+            const messageText = `Bonjour, je m'appelle ${name}.\nEmail: ${email}\nEntreprise: ${company}\nMessage: ${message}`;
+            const encodedMessage = encodeURIComponent(messageText);
+            window.open(`https://wa.me/33774306147?text=${encodedMessage}`, '_blank');
             
-            // Reset formulaire
             this.form.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            this.showToast('✓ Message envoyé avec succès! Nous vous contacterons bientôt.', 'success');
-        }, 1500);
+            if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+            this.showToast('✓ Message préparé ! Redirection vers WhatsApp...', 'success');
+        }, 1000);
     }
     
     isValidEmail(email) {
@@ -175,20 +179,21 @@ class FormHandler {
     }
     
     showToast(message, type = 'success') {
+        if (!this.toast) return;
         this.toast.textContent = message;
         this.toast.style.background = type === 'success' 
-            ? 'linear-gradient(135deg, var(--accent), var(--accent-dark))' 
-            : 'linear-gradient(135deg, var(--error), #d14747)';
+            ? 'linear-gradient(135deg, #10B981, #059669)' 
+            : 'linear-gradient(135deg, #EF4444, #DC2626)';
         this.toast.classList.add('show');
         
         setTimeout(() => {
             this.toast.classList.remove('show');
-        }, 3000);
+        }, 4000);
     }
 }
 
 // ================================================================
-// 5. CLASSE POUR LA GESTION DES MODALES
+// 4. GESTION DES MODALES
 // ================================================================
 
 class ModalManager {
@@ -201,7 +206,6 @@ class ModalManager {
     }
     
     init() {
-        // Ouvrir les modales
         this.modalTriggers.forEach(trigger => {
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -210,19 +214,14 @@ class ModalManager {
             });
         });
         
-        // Fermer les modales
         document.querySelectorAll('.modal-close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => this.closeAllModals());
         });
         
-        // Fermer overlay
         this.overlay?.addEventListener('click', () => this.closeAllModals());
         
-        // Fermer à la touche Esc
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeAllModals();
-            }
+            if (e.key === 'Escape') this.closeAllModals();
         });
     }
     
@@ -230,26 +229,24 @@ class ModalManager {
         const modal = document.getElementById(modalId);
         if (modal) {
             modal.classList.add('active');
-            this.overlay.classList.add('active');
+            if (this.overlay) this.overlay.classList.add('active');
         }
     }
     
     closeAllModals() {
-        this.modals.forEach(modal => {
-            modal.classList.remove('active');
-        });
-        this.overlay.classList.remove('active');
+        this.modals.forEach(modal => modal.classList.remove('active'));
+        if (this.overlay) this.overlay.classList.remove('active');
     }
 }
 
 // ================================================================
-// 6. CLASSE POUR LES ANIMATIONS DE NOMBRES
+// 5. ANIMATION DES NOMBRES (COMPTEURS)
 // ================================================================
 
 class CounterAnimation {
     constructor() {
         this.stats = document.querySelectorAll('.stat-number');
-        this.init();
+        if (this.stats.length > 0) this.init();
     }
     
     init() {
@@ -287,64 +284,7 @@ class CounterAnimation {
 }
 
 // ================================================================
-// 7. CLASSE POUR LES BOUTONS INTERACTIFS
-// ================================================================
-
-class ButtonInteractions {
-    constructor() {
-        this.buttons = document.querySelectorAll('.btn');
-        this.init();
-    }
-    
-    init() {
-        this.buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => this.createRipple(e));
-        });
-    }
-    
-    createRipple(e) {
-        const btn = e.target;
-        const ripple = document.createElement('span');
-        const rect = btn.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.position = 'absolute';
-        ripple.style.width = size + 'px';
-        ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.style.background = 'rgba(255, 255, 255, 0.5)';
-        ripple.style.borderRadius = '50%';
-        ripple.style.transform = 'scale(0)';
-        ripple.style.animation = 'ripple 0.6s ease-out';
-        
-        // Ajouter l'animation CSS
-        if (!document.querySelector('style[data-ripple]')) {
-            const style = document.createElement('style');
-            style.setAttribute('data-ripple', '');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(4);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        btn.style.position = 'relative';
-        btn.style.overflow = 'hidden';
-        btn.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-    }
-}
-
-// ================================================================
-// 8. SMOOTH SCROLL
+// 6. DEFILEMENT FLUIDE (SMOOTH SCROLL)
 // ================================================================
 
 class SmoothScroll {
@@ -361,13 +301,13 @@ class SmoothScroll {
     handleClick(e) {
         const href = e.currentTarget.getAttribute('href');
         
-        if (href === '#') return;
+        if (!href || href === '#') return;
         
-        e.preventDefault();
         const target = document.querySelector(href);
         
         if (target) {
-            const offset = 80;
+            e.preventDefault();
+            const offset = 70; // Hauteur de la navbar fixe
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
             
@@ -380,44 +320,7 @@ class SmoothScroll {
 }
 
 // ================================================================
-// 9. CLASSE POUR OPTIMISATION PERFORMANCE
-// ================================================================
-
-class PerformanceOptimizer {
-    static initLazyLoading() {
-        if ('IntersectionObserver' in window) {
-            const images = document.querySelectorAll('img[data-src]');
-            
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
-        }
-    }
-    
-    static debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-}
-
-// ================================================================
-// 10. APPLICATION PRINCIPALE
+// 7. PERFORMANCE ET INITIALISATION GENERALE
 // ================================================================
 
 class App {
@@ -426,7 +329,6 @@ class App {
     }
     
     init() {
-        // Vérifier que le DOM est chargé
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.setup());
         } else {
@@ -435,10 +337,10 @@ class App {
     }
     
     setup() {
-        console.log('🚀 Vespera-One App Initializing...');
+        console.log('🚀 Vespera-One App Ready!');
         
-        // Initialiser les modules
         new Navigation();
+        new SmoothScroll();
         
         if (CONFIG.animationsEnabled) {
             new ScrollAnimations();
@@ -452,44 +354,8 @@ class App {
         if (CONFIG.modalEnabled) {
             new ModalManager();
         }
-        
-        new ButtonInteractions();
-        new SmoothScroll();
-        
-        // Optimisations
-        PerformanceOptimizer.initLazyLoading();
-        
-        // CTA Principal
-        const ctaBtn = document.getElementById('ctaBtn');
-        if (ctaBtn) {
-            ctaBtn.addEventListener('click', () => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
-        
-        console.log('✅ Vespera-One Ready!');
     }
 }
 
-// ================================================================
-// 11. LANCER L'APPLICATION
-// ================================================================
-
+// Lancement de l'application
 const app = new App();
-
-// ================================================================
-// 12. UTILITAIRES GLOBAUX
-// ================================================================
-
-// Ajouter les événements de scroll pour les animations
-window.addEventListener('scroll', () => {
-    // Animations supplémentaires si nécessaire
-}, { passive: true });
-
-// Gérer le redimensionnement
-window.addEventListener('resize', PerformanceOptimizer.debounce(() => {
-    // Gestion responsive
-}, 250), { passive: true });

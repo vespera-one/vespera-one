@@ -14,41 +14,48 @@
 
     <nav class="navbar">
         <div class="nav-container">
-                <a href="#" class="logo-typographique">VESPERA-ONE</a>
-            </a>
-            <div class="nav-menu">
+            <a href="#" class="logo-typographique">VESPERA-ONE</a>
+            
+            <!-- Le bouton 3 traits (Hamburger) -->
+            <button class="menu-burger" aria-label="Menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#tarifs" class="nav-link">Tarifs</a>
                 <a href="#avis" class="nav-link">Avis & Réalisations</a>
-                <a href="mailto:vesperaone.pro@gmail.com" class="nav-btn">Nous contacter</a>
+                <a href="#contact" class="nav-btn">Nous contacter</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
-    <div class="hero-bg-slider">
-      <div class="hero-bg-track">
-        <img src="image/aya.jpg" alt="Projet 1">
-        <img src="image/dentiste.jpg" alt="Projet 2">
-        <img src="image/nails.jpg" alt="Projet 3">
-        <img src="image/aya.jpg" alt="Projet 1">
-        <img src="image/dentiste.jpg" alt="Projet 2">
-        <img src="image/nails.jpg" alt="Projet 3">
-      </div>
-      <div class="hero-overlay"></div>
-    </div>
+        <div class="hero-bg-slider">
+            <div class="hero-bg-track">
+                <img src="image/aya.jpg" alt="Projet 1">
+                <img src="image/dentiste.jpg" alt="Projet 2">
+                <img src="image/nails.jpg" alt="Projet 3">
+                <img src="image/aya.jpg" alt="Projet 1">
+                <img src="image/dentiste.jpg" alt="Projet 2">
+                <img src="image/nails.jpg" alt="Projet 3">
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
 
-    <div class="badge">Sites web Premium - France</div>
-    <h1 class="h1">
-        <span style="display: block; font-family: inherit; margin-bottom: 8px;">VESPERA-ONE</span>
-        <span class="gold-gradient-text">s'engage pour votre Presense en ligne</span>
-    </h1>
-    <p>Nous concevons des plateformes web d'exception pour les entreprises et créateurs d'élite.</p>
-    <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">DÉMARRER UN PROJET</a>
-        <a href="#avis" class="btn btn-secondary">VOIR NOS RÉALISATIONS & AVIS</a>
-    </div>
-</header>
+        <div class="badge">Sites web Premium - France</div>
+        <h1 class="h1">
+            <span style="display: block; font-family: inherit; margin-bottom: 8px;">VESPERA-ONE</span>
+            <span class="gold-gradient-text">s'engage pour votre Présence en ligne</span>
+        </h1>
+        <p>Nous concevons des plateformes web d'exception pour les entreprises et créateurs d'élite.</p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">DÉMARRER UN PROJET</a>
+            <a href="#avis" class="btn btn-secondary">VOIR NOS RÉALISATIONS & AVIS</a>
+        </div>
+    </header>
 
     <section id="services" class="section">
         <div class="container">
@@ -57,7 +64,7 @@
             <div class="grid">
                 <div class="card">
                     <div class="card-icon">🎨</div>
-                    <h3>Design UX/UI </h3>
+                    <h3>Design UX/UI</h3>
                     <p>Maquettes modernes, épurées et taillées sur-mesure pour capter l'attention de vos clients dès la première seconde.</p>
                 </div>
                 <div class="card">
@@ -76,7 +83,7 @@
 
     <section id="tarifs" class="section bg-alt">
         <div class="container">
-            <h2 class="section-title">découvrir <span class="gold-gradient-text">Nos offres</span></h2>
+            <h2 class="section-title">Découvrir <span class="gold-gradient-text">Nos offres</span></h2>
             <p class="section-subtitle">Investissez dans votre croissance avec des offres sans frais cachés.</p>
             <div class="grid pricing-grid">
                 
@@ -88,8 +95,8 @@
                         <li>✓ 1 à 3 Pages Sur-Mesure</li>
                         <li>✓ Formulaire de Contact Rapide</li>
                         <li>✓ Optimisation Mobile & SEO de base</li>
-                        <li>✔ Livraison Express sous 2-5 jours ouvrée</li>
-                        <li>✔ Garantie Satisfait ou Remboursé sous 14jours</li>
+                        <li>✔ Livraison Express sous 2-5 jours ouvrés</li>
+                        <li>✔ Garantie Satisfait ou Remboursé sous 14 jours</li>
                     </ul>
                     <a href="https://www.paypal.com/ncp/payment/U4E5XSGV7SY4E" class="card-cta" target="_blank">Choisir Pack vitrine Standard</a>
                 </div>
@@ -105,11 +112,11 @@
                         <li>✓ Référencement SEO Avancé</li>
                         <li>✓ Hébergement 1 An Offert</li>
                         <li>✓ Support Prioritaire Dédié</li>
-                        <li>✓ Accompagnement Personnel 2semaines</li>
-                        <li>✔ Livraison Express sous 2-5 jours ouvrée</li>
-                        <li>✔ Garantie Satisfait ou Remboursé sous 14jours</li>
+                        <li>✓ Accompagnement Personnel 2 semaines</li>
+                        <li>✔ Livraison Express sous 2-5 jours ouvrés</li>
+                        <li>✔ Garantie Satisfait ou Remboursé sous 14 jours</li>
                     </ul>
-                    <a href="https://www.paypal.com/ncp/payment/5CKHZCVCZGJNQ" target="_blank" class="card-cta">Commmander le Business Ultra</a>
+                    <a href="https://www.paypal.com/ncp/payment/5CKHZCVCZGJNQ" target="_blank" class="card-cta">Commander le Business Ultra</a>
                 </div>
 
                 <div class="pricing-card">
@@ -117,13 +124,13 @@
                     <div class="price">520€</div>
                     <ul class="features">
                         <li>✓ Design Sur-Mesure & Stratégique</li>
-                        <li>✓ Jusqu'a 6 Pages Complètes</li>
+                        <li>✓ Jusqu'à 6 Pages Complètes</li>
                         <li>✓ Référencement SEO & Performance</li>
                         <li>✓ Hébergement 1 an Inclus</li>
-                        <li>✔ Livraison Express sous 2-5 jours ouvrée</li>
-                        <li>✔ Garantie Satisfait ou Remboursé sous 14jours</li>
+                        <li>✔ Livraison Express sous 2-5 jours ouvrés</li>
+                        <li>✔ Garantie Satisfait ou Remboursé sous 14 jours</li>
                     </ul>
-                    <a href="https://www.paypal.com/ncp/payment/4BASVKGNUA3AS" class="card-cta">Commander le Pack Pro</a>
+                    <a href="https://www.paypal.com/ncp/payment/4BASVKGNUA3AS" target="_blank" class="card-cta">Commander le Pack Pro</a>
                 </div>
 
             </div>
@@ -138,17 +145,16 @@
             <div class="rating-banner">
                 <div class="score">4.9 / 5.0</div>
                 <div class="stars">★★★★★</div>
-                <div class="total-reviews">Basé sur <strong>40 avis clients vérifiés</strong> (90 avis 5★ )</div>
+                <div class="total-reviews">Basé sur <strong>40 avis clients Trustpilot & Google</strong></div>
             </div>
             
-            <div class="card review-card">
+            <div class="grid reviews-grid">
+                <div class="card review-card">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"moi ayant acheter un peu chez tout monde vespera-one restera meilleur merci pour tout je reviendrer vers vous,livraison rapide sous 1 jour j'ai rembourser mon achat en 1mois."</p>
                     <div class="review-author">— Hugo R., freelance</div>
                 </div>
-            </div>
 
-            <div class="grid reviews-grid">
                 <div class="card review-card">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Vespera-One a transformé l'image de ma marque. Le site est d'une élégance rare et mes conversions ont augmenté dès la première semaine."</p>
@@ -166,110 +172,126 @@
                     <p class="review-text">"Super design, animations ultra fluides. Le délai de livraison a été parfaitement respecté. Je recommande à 100% !"</p>
                     <div class="review-author">— Marc D., Consultant Finance</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="realisations" class="section">
+        <div class="container">
+            <h2 class="section-title">Aperçu de <span class="green-text">nos réalisations récentes</span></h2>
             
-               </div>
-</section>
+            <!-- CARROUSEL DES RÉALISATIONS -->
+            <div class="cards-slider-container">
+                <div class="cards-slider-track">
+                    
+                    <!-- Carte 1 : Dentiste -->
+                    <a href="https://cabinet-dentaire-jade-chi.vercel.app/" target="_blank" rel="noopener" class="realisation-card">
+                        <img src="image/dentiste.jpg" alt="Cabinet Dentaire D2L">
+                        <div class="card-info">
+                            <h3>Cabinet D2L</h3>
+                            <p>Dentisterie & Esthétique</p>
+                        </div>
+                    </a>
 
-<section id="realisations" class="section">
-  <h2 class="section-title">Aperçu de nos réalisations récentes<span class="green-text">nos realisations récentes</span></h2>
-  
-  <!-- CARROUSEL DES RÉALISATIONS -->
-  <div class="cards-slider-container">
-    <div class="cards-slider-track">
-      
-      <!-- Carte 1 : Dentiste -->
-      <div class="realisation-card">
-        <img src="image/dentiste.jpg" alt="Cabinet Dentaire D2L">
-        <div class="card-info">
-          <h3>Cabinet D2L</h3>
-          <p>Dentisterie & Esthétique</p>
-        </div>
-      </div>
+                    <!-- Carte 2 : Nails -->
+                    <a href="https://nails-beta-gules.vercel.app/" target="_blank" rel="noopener" class="realisation-card">
+                        <img src="image/nails.jpg" alt="Prothésiste Ongulaire">
+                        <div class="card-info">
+                            <h3>Nails.</h3>
+                            <p>Prothésiste Ongulaire</p>
+                        </div>
+                    </a>
 
-      <!-- Carte 2 : Nails -->
-      <div class="realisation-card">
-        <img src="image/nails.jpg" alt="Prothésiste Ongulaire">
-        <div class="card-info">
-          <h3>Nails.</h3>
-          <p>Prothésiste Ongulaire</p>
-        </div>
-      </div>
+                    <!-- Carte 3 : Denis Soudure -->
+                    <a href="https://denis-soudure.vercel.app/" target="_blank" rel="noopener" class="realisation-card">
+                        <img src="image/aya.jpg" alt="Denis Soudure">
+                        <div class="card-info">
+                            <h3>Denis Soudure</h3>
+                            <p>Artisan Soudeur</p>
+                        </div>
+                    </a>
 
-      <!-- Carte 3 : Ayna -->
-      <div class="realisation-card">
-        <img src="image/aya.jpg" alt="Ayna Beauty">
-        <div class="card-info">
-          <h3>Ayna</h3>
-          <p>E-Commerce Cosmétique</p>
-        </div>
-      </div>
+                    <!-- DUPLICATION CLIQUABLE POUR DÉFILEMENT EN BOUCLE INFINIE -->
+                    <a href="https://cabinet-dentaire-jade-chi.vercel.app/" target="_blank" rel="noopener" class="realisation-card">
+                        <img src="image/dentiste.jpg" alt="Cabinet Dentaire D2L">
+                        <div class="card-info">
+                            <h3>Cabinet D2L</h3>
+                            <p>Dentisterie & Esthétique</p>
+                        </div>
+                    </a>
 
-      <!-- DUPLICATION POUR DÉFILEMENT EN BOUCLE INFINIE -->
-      <div class="realisation-card">
-        <img src="image/dentiste.jpg" alt="Cabinet Dentaire D2L">
-        <div class="card-info">
-          <h3>Cabinet D2L</h3>
-          <p>Dentisterie & Esthétique</p>
-        </div>
-      </div>
+                    <a href="https://nails-beta-gules.vercel.app/" target="_blank" rel="noopener" class="realisation-card">
+                        <img src="image/nails.jpg" alt="Prothésiste Ongulaire">
+                        <div class="card-info">
+                            <h3>Nails.</h3>
+                            <p>Prothésiste Ongulaire</p>
+                        </div>
+                    </a>
 
-      <div class="realisation-card">
-        <img src="image/nails.jpg" alt="Prothésiste Ongulaire">
-        <div class="card-info">
-          <h3>Nails.</h3>
-          <p>Prothésiste Ongulaire</p>
-        </div>
-      </div>
+                    <a href="https://denis-soudure.vercel.app/" target="_blank" rel="noopener" class="realisation-card">
+                        <img src="image/aya.jpg" alt="Denis Soudure">
+                        <div class="card-info">
+                            <h3>Denis Soudure</h3>
+                            <p>Artisan Soudeur</p>
+                        </div>
+                    </a>
 
-      <div class="realisation-card">
-        <img src="image/aya.jpg" alt="Ayna Beauty">
-        <div class="card-info">
-          <h3>Ayna</h3>
-          <p>E-Commerce Cosmétique</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="section bg-alt">
-    <div class="container small-container">
-      <h2 class="section-title">Discutons de Votre <span class="gold-gradient-text">Projet</span></h2>
-      <p class="section-subtitle">Envoyez-nous un message direct et recevez votre proposition sous 2h.</p>
+        <div class="container small-container">
+            <h2 class="section-title">Discutons de Votre <span class="gold-gradient-text">Projet</span></h2>
+            <p class="section-subtitle">Envoyez-nous un message direct et recevez votre proposition sous 2h.</p>
 
-      <div class="contact-box">
-        <div class="fast-reply-badge">⚡ Réponse garantie en moins de 2h</div>
-        <p class="contact-email-direct">Email : <a href="mailto:vespera-one.pro@gmail.com">vespera-one.pro@gmail.com</a></p>
-        <p class="contact-email-direct" style="margin-top: 5px;">Téléphone : <a href="tel:0774306143">07 74 30 61 43</a></p>
-        
-        <div style="margin-top: 25px;">
-          <a href="mailto:vespera-one.pro@gmail.com" class="btn btn-primary">Nous contacter par mail</a>
+            <div class="contact-box">
+                <div class="fast-reply-badge">⚡ Réponse garantie en moins de 2h</div>
+                
+                <!-- Formulaire d'envoi direct -->
+                <form action="https://formsubmit.co/vespera-one.pro@gmail.com" method="POST" class="contact-form">
+                    <!-- Anti-spam et redirection automatique -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="form-group">
+                        <input type="text" name="nom" placeholder="Votre Nom / Entreprise" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Votre Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="telephone" placeholder="Votre Téléphone">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="Décrivez votre projet..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary full-width">DÉMARRER MON PROJET GRATUITEMENT</button>
+                </form>
+            </div>
+
+            <!-- BLOC RÉSEAUX SOCIAUX & AVIS -->
+            <div class="social-links-box" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-size: 0.9rem; color: #10b981; font-weight: 600; margin-bottom: 12px; text-align: center;">RETROUVEZ-NOUS & AVIS CLIENTS</p>
+                <div class="social-buttons" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://share.google/59ICRRRFQsIW9fm9hP" target="_blank" rel="noopener" class="social-btn">📍 Google Business</a>
+                    <a href="https://fr.trustpilot.com/review/vespera-one.netlify.app" target="_blank" rel="noopener" class="social-btn">⭐ Trustpilot</a>
+                    <a href="https://www.instagram.com/vesperaone.pro" target="_blank" rel="noopener" class="social-btn">Instagram</a>
+                    <a href="https://www.tiktok.com/@vesperaonepro" target="_blank" rel="noopener" class="social-btn">TikTok</a>
+                    <a href="https://www.linkedin.com/in/vespera-one-919a92427" target="_blank" rel="noopener" class="social-btn">LinkedIn</a>
+                    <a href="https://www.facebook.com/share/17yD3DMvBx/" target="_blank" rel="noopener" class="social-btn">Facebook</a>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <!-- BLOC RÉSEAUX SOCIAUX & AVIS -->
-        <div class="social-links-box" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p style="font-size: 0.9rem; color: #10b981; font-weight: 600; margin-bottom: 12px;">RETROUVEZ-NOUS & AVIS CLIENTS</p>
-          <div class="social-buttons" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://share.google/59ICRRRFQsIW9fm9hP" target="_blank" rel="noopener" class="social-btn">📍 Google Business</a>
-            <a href="https://fr.trustpilot.com/review/vespera-one.netlify.app" target="_blank" rel="noopener" class="social-btn">⭐ Trustpilot</a>
-            <a href="https://www.instagram.com/vesperaone.pro" target="_blank" rel="noopener" class="social-btn">Instagram</a>
-            <a href="https://www.tiktok.com/@vesperaonepro" target="_blank" rel="noopener" class="social-btn">TikTok</a>
-            <a href="https://www.linkedin.com/in/vespera-one-919a92427" target="_blank" rel="noopener" class="social-btn">LinkedIn</a>
-            <a href="https://www.facebook.com/share/17yD3DMvBx/" target="_blank" rel="noopener" class="social-btn">Facebook</a>
-          </div>
-        </div>
+    <footer>
+        <p>&copy; 2026-2027 VESPERA-ONE. Tous droits réservés. L'Élégance & la Performance Web.</p>
+    </footer>
 
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2026-2027 VESPERA-ONE. Tous droits réservés. L'Élégance & la Performance Web.</p>
-  </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
