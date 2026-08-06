@@ -331,11 +331,13 @@ body {
     font-weight: 700;
 }
 
+/* Style Bleu Glacier / Tech Premium */
 .gold-gradient-text {
-    background: var(--or-gradient);
+    background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
+}
 }
 
 /* --- 6. SERVICES & TARIFS (GRID & CARDS) --- */
@@ -649,7 +651,8 @@ footer {
     }
 
     .nav-menu.active {
-        right: 0;
+    right: 0 !important;
+    z-index: 99999 !important;
     }
 
     .hero h1 {
