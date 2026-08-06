@@ -129,8 +129,8 @@ body {
 .badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(191, 140, 106, 0.1); /* Utilise ton cuivre en version ultra-légère et transparente */
-    border: 1px solid rgba(191, 140, 106, 0.3); /* Une fine bordure discrète en couleur cuivre */
+    background: #15803d(191, 140, 106, 0.1); /* Utilise ton cuivre en version ultra-légère et transparente */
+    border: 1px solid #4ade80(191, 140, 106, 0.3); /* Une fine bordure discrète en couleur cuivre */
     border-radius: 30px;                      /* Forme de pilule arrondie */
     color: var(--cuivre-accent);              /* Texte aux couleurs de ton cuivre */
     font-size: 0.85rem;
@@ -733,9 +733,10 @@ a.btn-secondaire:hover,
 }
 
 .hero-bg-track img {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .hero-overlay {
@@ -776,7 +777,7 @@ a.btn-secondaire:hover,
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: defilementCartes 18s linear infinite;
+  animation: defilementCartes 15s linear infinite;
 }
 
 /* Pause au survol de la souris */
@@ -792,7 +793,7 @@ a.btn-secondaire:hover,
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .realisation-card:hover {
@@ -923,5 +924,53 @@ a.btn-secondaire:hover,
 /* --- 5. LIENS ET CONTACT --- */
 .contact-box p a,
 .social-links-box p {
-  color: #10b981 !important;
+  color: #15803d !important;
+}
+
+/* ===================================================
+   PERSONNALISATION EN VERT SAUGE / FORÊT (#15803d)
+   =================================================== */
+
+/* 1. Bouton "Nous contacter" dans le menu du haut */
+.nav-links a[href*="contact"],
+header .btn-contact,
+header a:last-child {
+  background-color: #15803d !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-links a[href*="contact"]:hover {
+  background-color: #166534 !important;
+  box-shadow: 0 4px 15px rgba(21, 128, 61, 0.4) !important;
+}
+
+/* 2. Les métiers sous les cartes de réalisations */
+.project-card p,
+.realisation-card p,
+.project-category,
+.project-subtitle {
+  color: #15803d !important;
+  font-weight: 600 !important;
+}
+
+/* 3. Toutes les étoiles ★ de la section Avis */
+.stars,
+.star,
+.rating-stars,
+.testimonial-stars,
+.review-stars {
+  color: #15803d !important;
+}
+
+/* 4. Le mot-clé en vert dans les titres (Ex: "récentes") */
+.green-text,
+.highlight-green {
+  color: #15803d !important;
+  background: none !important;
+  -webkit-text-fill-color: #15803d !important;
+  font-weight: 700 !important;
 }
