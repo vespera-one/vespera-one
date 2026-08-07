@@ -338,7 +338,6 @@ body {
     -webkit-text-fill-color: transparent;
     font-weight: 800;
 }
-}
 
 /* --- 6. SERVICES & TARIFS (GRID & CARDS) --- */
 .grid {
@@ -500,7 +499,7 @@ body {
     display: flex;
     gap: 24px;
     width: max-content;
-    animation: defilementCartes 18s linear infinite;
+    animation: defilementCartes 10s linear infinite;
     will-change: transform;
 }
 
